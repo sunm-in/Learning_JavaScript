@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let word of s) {
+          if (word.length > max) {
+            max = word.length;
+            answer = word;
+          }
+        }
+
+        return answer;
+      }
+
+      function solution2(s) {
+        let answer = '';
+        for (let word of s) {
+          if (word.length > answer.length) answer = word;
+        }
+        return answer;
+      }
+
+      let str = ['teacher', 'time', 'student', 'beautiful', 'good'];
+      console.log(solution(str));
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>
