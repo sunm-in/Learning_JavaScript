@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 등수구하기
+      // 첫 줄에 N(3<=N<=1000)이 입력, 두 번째 줄에 국어점수를 의미하는 N개의 정수가 입력 된다.
+      // 입력된 순서대로 등수를 출력한다.
+
+      function solution(arr) {
+        let n = arr.length;
+        // Array.from -> 첫번째 인자로 {length: n} 를 넘겨주면 길이가 n인 배열로 인식하고 유사 배열을 배열로 만들어주는 메소드이고
+        // 두번째 인자로 각각의 유사배열에 전달할 함수를 넘길 수 있다.
+        let answer = Array.from({ length: n }, () => 1); // [1, 1, 1, 1, 1]
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (arr[i] < arr[j]) answer[i]++;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [87, 89, 92, 100, 76];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
