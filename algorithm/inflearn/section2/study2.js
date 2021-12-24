@@ -47,20 +47,56 @@
   console.log(solution(a, b));
 }
 {
-  // 점수 계산
+  // (1) 점수 계산
   function solution(arr) {
-    let answer;
+    let answer = 0;
+    let cnt = 0;
+    for (const x of arr) {
+      if (x === 1) {
+        cnt++;
+        answer += cnt;
+      } else cnt = 0;
+    }
     return answer;
   }
-  // console.log(solution(arr));
+  let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+  console.log(solution(arr));
 }
+{
+  // (2) 점수 계산
+  function solution(arr) {
+    let answer = 0;
+    const score = arr.join('').split(0);
+    // console.log(arr.join('')); // 1011100110
+    // console.log(arr.join('').split(0)); // [ '1', '111', '', '11', '' ]
+
+    for (const x of score) {
+      if (x) {
+        // console.log(x.length); // 1 3 2
+        answer += (x.length * (x.length + 1)) / 2;
+      }
+    }
+    return answer;
+  }
+  let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+  console.log(solution(arr));
+}
+console.clear();
 {
   // 등수구하기
   function solution(arr) {
-    let answer;
+    let n = arr.length;
+    let answer = Array.from({ length: n }, () => 1); // [1, 1, 1, 1, 1]
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        if (arr[i] < arr[j]) answer[i]++;
+      }
+    }
+
     return answer;
   }
-  // console.log(solution(arr));
+  let arr = [87, 89, 92, 100, 76];
+  console.log(solution(arr));
 }
 {
   // 격자판 최대합
